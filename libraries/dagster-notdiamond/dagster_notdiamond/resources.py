@@ -1,7 +1,8 @@
 from contextlib import contextmanager
 from enum import Enum
 from importlib import metadata
-from typing import Generator, Optional, Union
+from typing import Optional, Union
+from collections.abc import Generator
 from weakref import WeakKeyDictionary
 
 from packaging import version
@@ -101,7 +102,7 @@ class NotDiamondResource(ConfigurableResource):
     @public
     @contextmanager
     def get_client(
-        self, context: Union[AssetExecutionContext, OpExecutionContext]
+        self, context: AssetExecutionContext | OpExecutionContext
     ) -> Generator[NotDiamond, None, None]:
         """Yields an ``notdiamond.NotDiamond`` client for interacting with the Not DiamondAPI.
 
@@ -150,8 +151,8 @@ class NotDiamondResource(ConfigurableResource):
 
     def _get_client(
         self,
-        context: Union[AssetExecutionContext, OpExecutionContext],
-        asset_key: Optional[AssetKey] = None,
+        context: AssetExecutionContext | OpExecutionContext,
+        asset_key: AssetKey | None = None,
     ) -> Generator[NotDiamond, None, None]:
         if isinstance(context, AssetExecutionContext):
             if asset_key is None:

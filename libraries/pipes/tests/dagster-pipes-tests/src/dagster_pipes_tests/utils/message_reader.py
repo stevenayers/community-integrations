@@ -1,6 +1,6 @@
 from contextlib import contextmanager
 from threading import Event, Thread
-from typing import Iterator
+from collections.abc import Iterator
 
 from dagster import PipesFileMessageReader
 from dagster._core.pipes.context import (

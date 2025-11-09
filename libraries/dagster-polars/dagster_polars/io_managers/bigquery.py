@@ -50,7 +50,7 @@ class PolarsBigQueryTypeHandler(DbTypeHandler[pl.DataFrame]):
         self,
         context: OutputContext,
         table_slice: TableSlice,
-        obj: Optional[pl.DataFrame],
+        obj: pl.DataFrame | None,
         connection,
     ):
         """Stores the polars DataFrame in BigQuery."""
@@ -200,5 +200,5 @@ class PolarsBigQueryIOManager(BigQueryIOManager):
         return [PolarsBigQueryTypeHandler()]
 
     @staticmethod
-    def default_load_type() -> Optional[type]:
+    def default_load_type() -> type | None:
         return pl.DataFrame

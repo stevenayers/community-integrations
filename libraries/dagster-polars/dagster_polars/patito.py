@@ -1,5 +1,6 @@
 from collections.abc import Callable
-from typing import TYPE_CHECKING, Any, Mapping, Optional
+from typing import TYPE_CHECKING, Any, Optional
+from collections.abc import Mapping
 
 import polars as pl
 from dagster import (
@@ -52,8 +53,8 @@ HANDLES_DATA_VALIDATION_ATTRIBUTE = "_handles_data_validation"
 
 def patito_model_to_dagster_type(
     model: type["pt.Model"],
-    name: Optional[str] = None,
-    description: Optional[str] = None,
+    name: str | None = None,
+    description: str | None = None,
 ) -> DagsterType:
     """Convert patito model to dagster type checking.
 

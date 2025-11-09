@@ -1,66 +1,46 @@
 from typing import List, NamedTuple, TypedDict
 
-RunResponse = TypedDict(
-    "RunResponse",
-    {
-        "projectId": str,
-        "runId": str,
-        "runUrl": str,
-        "runStatusUrl": str,
-        "traceId": str,
-    },
-)
+class RunResponse(TypedDict):
+    projectId: str
+    runId: str
+    runUrl: str
+    runStatusUrl: str
+    traceId: str
 
-ProjectResponse = TypedDict(
-    "ProjectResponse",
-    {
-        "projectId": str,
-        "title": str,
-        "description": str,
-        "creator": dict,
-        "lastEditedAt": str,
-        "lastPublishedAt": str,
-        "categories": List[dict],
-    },
-)
+class ProjectResponse(TypedDict):
+    projectId: str
+    title: str
+    description: str
+    creator: dict
+    lastEditedAt: str
+    lastPublishedAt: str
+    categories: list[dict]
 
-NotificationResponse = TypedDict(
-    "NotificationResponse",
-    {
-        "type": str,
-        "recipientType": str,
-        "includeSuccessScreenshot": bool,
-        "recipients": List[dict],
-    },
-)
+class NotificationResponse(TypedDict):
+    type: str
+    recipientType: str
+    includeSuccessScreenshot: bool
+    recipients: list[dict]
 
 
-StatusResponse = TypedDict(
-    "StatusResponse",
-    {
-        "projectId": str,
-        "runId": str,
-        "runUrl": str,
-        "status": str,
-        "startTime": str,
-        "endTime": str,
-        "elapsedTime": int,
-        "traceId": str,
-        "notifications": List[NotificationResponse],
-    },
-)
+class StatusResponse(TypedDict):
+    projectId: str
+    runId: str
+    runUrl: str
+    status: str
+    startTime: str
+    endTime: str
+    elapsedTime: int
+    traceId: str
+    notifications: list[NotificationResponse]
 
 
-NotificationDetails = TypedDict(
-    "NotificationDetails",
-    {
-        "type": str,
-        "includeSuccessScreenshot": bool,
-        "slackChannelIds": List[str],
-        "userIds": List[str],
-        "groupIds": List[str],
-    },
-)
+class NotificationDetails(TypedDict):
+    type: str
+    includeSuccessScreenshot: bool
+    slackChannelIds: list[str]
+    userIds: list[str]
+    groupIds: list[str]
 
 
 class HexOutput(

@@ -45,13 +45,13 @@ def dataform_asset_check_failure_notification_job():
 def create_dataform_workflow_invocation_sensor(
     resource: DataformRepositoryResource,
     minutes_ago: int,
-    workflow_invocation_failure_notification_job: Optional[
+    workflow_invocation_failure_notification_job: None | (
         dg.JobDefinition
-    ] = dataform_workflow_invocation_failure_notification_job,
-    asset_check_failure_notification_job: Optional[
+    ) = dataform_workflow_invocation_failure_notification_job,
+    asset_check_failure_notification_job: None | (
         dg.JobDefinition
-    ] = dataform_asset_check_failure_notification_job,
-    inclusion_patterns: Optional[List[str]] = None,
+    ) = dataform_asset_check_failure_notification_job,
+    inclusion_patterns: list[str] | None = None,
 ):
     """
     This function creates a sensor that polls the Dataform API for workflow invocations. It has the following capabilities:

@@ -200,7 +200,7 @@ def _prepare_bteq_command(
 
 
 def prepare_bteq_command_for_remote_execution(
-    timeout: Optional[int],  # or: timeout: int | None
+    timeout: int | None,  # or: timeout: int | None
     bteq_script_encoding: str,
     bteq_session_encoding: str,
     timeout_rc: int,
@@ -226,7 +226,7 @@ def prepare_bteq_command_for_remote_execution(
 
 def prepare_bteq_command_for_local_execution(
     teradata_connection_resource,
-    timeout: Optional[int],  # or: timeout: int | None
+    timeout: int | None,  # or: timeout: int | None
     bteq_script_encoding: str,
     bteq_session_encoding: str,
     timeout_rc: int,
